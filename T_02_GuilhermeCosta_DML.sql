@@ -52,6 +52,22 @@ WHERE Categorias.Nome = @Categorias;
 
 EXEC ListarCategorias 'Ação';
 
+ALTER TABLE Usuarios ADD Imagem VARCHAR(255);
+
+UPDATE Usuarios SET Imagem = 'https://pbs.twimg.com/profile_images/646013618128089089/f-yUs90Y.jpg'
+WHERE IdUsuario = 5;
+
+UPDATE Usuarios SET Imagem = 'https://static.significados.com.br/foto/kqqdap2_sm.jpg'
+WHERE IdUsuario = 6;
+
+UPDATE Usuarios SET Imagem = 'https://i.ytimg.com/vi/ML1LpAocvx4/hqdefault.jpg'
+WHERE IdUsuario = 7;
+
+UPDATE Usuarios SET Imagem = 'https://cdn.midiamax.com.br/elasticbeanstalk-us-west-2-809048387867/uploads/2017/02/arquivos_noticias_2017_fev_mucho_macho_serjao_berranteiro-640x430.jpg'
+WHERE IdUsuario = 8;
+
+UPDATE Usuarios SET Imagem = 'https://miro.medium.com/fit/c/256/256/1*II0qqGjGA1im-cBZnBjIdQ.jpeg'
+WHERE IdUsuario = 9;
 
 CREATE PROCEDURE ListarCategoriasPorId @Categorias INT
 AS
