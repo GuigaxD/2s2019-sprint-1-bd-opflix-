@@ -7,3 +7,9 @@ SELECT * FROM Permissao;
 SELECT * FROM Usuarios;
 SELECT * FROM Plataforma;
 
+EXEC ListarCategorias 'Ação';
+
+EXEC ListarCategoriasPorId 1;
+
+SELECT * FROM vPlataforma;
+

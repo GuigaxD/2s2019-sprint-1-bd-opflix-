@@ -60,6 +60,11 @@ WHERE Categorias.IdCategoria = @Categorias ;
 
 EXEC ListarCategoriasPorId 1;
 
+CREATE VIEW vPlataforma AS
+SELECT IdPlataforma, Titulo, IdCategoria from Conteudo
+
+SELECT * FROM vPlataforma;
+
 DELETE FROM Conteudo
 WHERE IdConteudo = 9
 
