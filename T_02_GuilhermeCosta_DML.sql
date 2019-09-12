@@ -18,11 +18,11 @@ INSERT INTO FS(Qual) VALUES ('Filme')
 
 
 
-INSERT INTO Usuarios(Nome,Email,IdPermissao) VALUES ('Pedro','Pedro@gmail.com',1)
-														,('José','Jose@gmail.com',2)
-														,('Joaquim','Joaquim@gmail.com',1)
-														,('Colibri','Colibri@gmail.com',2)
-INSERT INTO Usuarios(Nome,Email,IdPermissao) VALUES('Helena','Helena@gmail.com',2)
+INSERT INTO Usuarios(Nome,Email,Permissao,CPF) VALUES ('Pedro','Pedro@gmail.com','CLIENTE',597996120-80)
+INSERT INTO Usuarios(Nome,Email,Permissao,CPF) VALUES ('José','Jose@gmail.com','CLIENTE',685865940-40)
+INSERT INTO Usuarios(Nome,Email,Permissao,CPF) VALUES ('Joaquim','Joaquim@gmail.com','CLIENTE',520910800-71)
+INSERT INTO Usuarios(Nome,Email,Permissao,CPF) VALUES('Colibri','Colibri@gmail.com','ADMIN',873611280-17)
+INSERT INTO Usuarios(Nome,Email,Permissao,CPF) VALUES('Helena','Helena@gmail.com','ADMIN',907294110-10)
 
 
 INSERT INTO Conteudo(Titulo,Sinopse,DLanc,Duracao,IdCategoria,IdFS,IdPlataforma) VALUES ('Matrix','Um jovem programador é atormentado por estranhos pesadelos nos quais sempre está conectado por cabos a um imenso sistema de computadores do futuro','1999-05-21','02:00:00',4,1,1)
@@ -39,8 +39,6 @@ INSERT INTO Categorias(Nome) VALUES ('Comédia')
 									,('Drama')
 									,('Ficção Científica')
 
-UPDATE Usuarios SET IdPermissao = 1
-WHERE Nome = 'Helena';
 
 UPDATE Conteudo SET Titulo = 'Casa de Papel - 3° Temporada'
 WHERE IdConteudo = 8;
@@ -94,3 +92,5 @@ SELECT * FROM Usuarios;
 DELETE FROM Categorias
 WHERE IdCategoria = 12;
 
+DELETE FROM Usuarios
+WHERE IdUsuario=2;

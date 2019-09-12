@@ -39,4 +39,8 @@ CREATE TABLE Permissao(
 ALTER TABLE dbo.Usuarios ADD IdPermissao INT FOREIGN KEY REFERENCES Permissao (IdPermissao);
 SELECT * FROM Usuarios
 ALTER TABLE dbo.Usuarios DROP COLUMN CPF;
-DROP TABLE Conteudo;
+DROP TABLE Usuarios;
+
+ALTER TABLE Usuarios ADD CPF BIGINT NOT NULL ;
+
+SELECT * FROM Usuarios
