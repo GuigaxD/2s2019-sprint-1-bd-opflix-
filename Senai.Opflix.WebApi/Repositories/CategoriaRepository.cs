@@ -12,7 +12,7 @@ namespace Senai.OpFlix.WebApi.Repositories
     {
         public void Cadastrar(Categorias categorias)
         {
-            using (OpflixContext ctx = new OpflixContext())
+            using (opflixContext ctx = new opflixContext())
             {
                 ctx.Categorias.Add(categorias);
                 ctx.SaveChanges();
@@ -21,7 +21,7 @@ namespace Senai.OpFlix.WebApi.Repositories
 
         public List<Categorias> Listar()
         {
-            using (OpflixContext ctx = new OpflixContext())
+            using (opflixContext ctx = new opflixContext())
             {
                 return ctx.Categorias.ToList();
             }
@@ -30,7 +30,7 @@ namespace Senai.OpFlix.WebApi.Repositories
 
         public Categorias BuscarPorId(int id)
         {
-            using (OpflixContext ctx = new OpflixContext())
+            using (opflixContext ctx = new opflixContext())
             {
                 return ctx.Categorias.FirstOrDefault(x => x.IdCategoria == id);
             }
@@ -38,7 +38,7 @@ namespace Senai.OpFlix.WebApi.Repositories
 
         public void Atualizar(Categorias categorias)
         {
-            using (OpflixContext ctx = new OpflixContext())
+            using (opflixContext ctx = new opflixContext())
             {
                 Categorias CategoriaBuscada = ctx.Categorias.FirstOrDefault(x => x.IdCategoria == categorias.IdCategoria);
                 CategoriaBuscada.Nome = categorias.Nome;
@@ -49,7 +49,7 @@ namespace Senai.OpFlix.WebApi.Repositories
         }
         public void Deletar(int Id)
         {
-            using (OpflixContext ctx = new OpflixContext())
+            using (opflixContext ctx = new opflixContext())
             {
                 //buscar
                 Categorias categorias = ctx.Categorias.Find(Id);

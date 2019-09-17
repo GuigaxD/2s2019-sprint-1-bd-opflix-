@@ -13,9 +13,9 @@ namespace Senai.Opflix.WebApi.Repositories
     {
         public Usuarios BuscarPorEmaileCPF(LoginViewModel login)
         {
-            using (OpflixContext ctx = new OpflixContext())
+            using (opflixContext ctx = new opflixContext())
             {
-                Usuarios usuario = ctx.Usuarios.FirstOrDefault(x => x.Email == login.Email && x.Email == login.CPF);
+                Usuarios usuario = ctx.Usuarios.FirstOrDefault(x => x.Email == login.Email && x.Nome == login.Nome);
                 if (usuario == null)
                     return null;
                 return usuario;

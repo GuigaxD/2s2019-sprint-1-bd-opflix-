@@ -11,7 +11,7 @@ namespace Senai.Opflix.WebApi.Repositories
     {
         public void Atualizar(Conteudo conteudo)
         {
-            using (OpflixContext ctx = new OpflixContext())
+            using (opflixContext ctx = new opflixContext())
             {
                 //achar
                 Conteudo conteudobuscado = ctx.Conteudo.FirstOrDefault(x => x.IdConteudo == conteudo.IdConteudo);
@@ -24,7 +24,7 @@ namespace Senai.Opflix.WebApi.Repositories
                 conteudobuscado.IdFs = conteudo.IdFs;
                 conteudobuscado.IdPlataforma = conteudo.IdPlataforma;
                 //enviar
-                ctx.Update();
+                ctx.Update(conteudobuscado);
                 //salvar
                 ctx.SaveChanges();
             }
@@ -32,7 +32,7 @@ namespace Senai.Opflix.WebApi.Repositories
 
         public Conteudo BuscarPorId(int id)
         {
-            using (OpflixContext ctx = new OpflixContext())
+            using (opflixContext ctx = new opflixContext())
             {
                 return ctx.Conteudo.FirstOrDefault(x => x.IdCategoria == id);
             }
@@ -40,7 +40,7 @@ namespace Senai.Opflix.WebApi.Repositories
 
         public void Cadastrar(Conteudo conteudo)
         {
-            using (OpflixContext ctx = new OpflixContext())
+            using (opflixContext ctx = new opflixContext())
             {
                 ctx.Conteudo.Add(conteudo);
                 ctx.SaveChanges();
@@ -49,14 +49,14 @@ namespace Senai.Opflix.WebApi.Repositories
 
         public List<Conteudo> Listar()
         {
-            using (OpflixContext ctx = new OpflixContext())
+            using (opflixContext ctx = new opflixContext())
             {
                return ctx.Conteudo.ToList();
             }
         }
         public void Deletar(int Id)
         {
-            using (OpflixContext ctx = new OpflixContext())
+            using (opflixContext ctx = new opflixContext())
             {
                 //buscar
                 Conteudo conteudobuscado = ctx.Conteudo.Find(Id);

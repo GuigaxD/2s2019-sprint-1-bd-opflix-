@@ -13,6 +13,6 @@ namespace Senai.Opflix.WebApi.ViewModels
         [Required]
         public string Email { get; set; }
         [Required]
-        public string CPF { get; set; }
+        public string Nome { get; set; }
     }
 }

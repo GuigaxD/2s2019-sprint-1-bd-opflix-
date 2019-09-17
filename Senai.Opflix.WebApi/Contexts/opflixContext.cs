@@ -4,19 +4,20 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Senai.Opflix.WebApi.Domains
 {
-    public partial class OpflixContext : DbContext
+    public partial class opflixContext : DbContext
     {
-        public OpflixContext()
+        public opflixContext()
         {
         }
 
-        public OpflixContext(DbContextOptions<OpflixContext> options)
+        public opflixContext(DbContextOptions<opflixContext> options)
             : base(options)
         {
         }
 
         public virtual DbSet<Categorias> Categorias { get; set; }
         public virtual DbSet<Conteudo> Conteudo { get; set; }
+        public virtual DbSet<Favoritos> Favoritos { get; set; }
         public virtual DbSet<Fs> Fs { get; set; }
         public virtual DbSet<Plataforma> Plataforma { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
@@ -28,11 +29,6 @@ namespace Senai.Opflix.WebApi.Domains
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=.\\SqlExpress;Initial Catalog=T_Opflix;User Id=sa;Pwd=132");
             }
-        }
-
-        internal void Update()
-        {
-            throw new NotImplementedException();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -81,6 +77,21 @@ namespace Senai.Opflix.WebApi.Domains
                     .WithMany(p => p.Conteudo)
                     .HasForeignKey(d => d.IdPlataforma)
                     .HasConstraintName("FK__Conteudo__IdPlat__72C60C4A");
+            });
+
+            modelBuilder.Entity<Favoritos>(entity =>
+            {
+                entity.HasKey(e => e.IdPadrao);
+
+                entity.HasOne(d => d.IdConteudoNavigation)
+                    .WithMany(p => p.Favoritos)
+                    .HasForeignKey(d => d.IdConteudo)
+                    .HasConstraintName("FK__Favoritos__IdCon__3C34F16F");
+
+                entity.HasOne(d => d.IdUsuarioNavigation)
+                    .WithMany(p => p.Favoritos)
+                    .HasForeignKey(d => d.IdUsuario)
+                    .HasConstraintName("FK__Favoritos__IdUsu__3D2915A8");
             });
 
             modelBuilder.Entity<Fs>(entity =>

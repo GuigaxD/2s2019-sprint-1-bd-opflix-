@@ -30,7 +30,7 @@ namespace Senai.OpFlix.WebApi.Controllers
         [HttpPost]
         public void Cadastrar(Categorias Categorias)
         {
-            using (OpflixContext ctx = new OpflixContext())
+            using (opflixContext ctx = new opflixContext())
             {
                 ctx.Categorias.Add(Categorias);
                 ctx.SaveChanges();

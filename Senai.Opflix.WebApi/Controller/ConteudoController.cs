@@ -35,7 +35,7 @@ namespace Senai.Opflix.WebApi.Controller
         [HttpPost]
         public void Cadastrar(Conteudo conteudo)
         {
-            using (OpflixContext ctx = new OpflixContext())
+            using (opflixContext ctx = new opflixContext())
             {
                 ctx.Conteudo.Add(conteudo);
                 ctx.SaveChanges();
