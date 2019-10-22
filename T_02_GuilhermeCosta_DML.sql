@@ -88,9 +88,12 @@ SELECT * FROM Permissao;
 SELECT * FROM FS;
 SELECT * FROM Conteudo;
 SELECT * FROM Usuarios;
-
+SELECT * FROM Favoritos;
 DELETE FROM Categorias
 WHERE IdCategoria = 12;
+
+INSERT INTO Favoritos(IdConteudo,IdUsuario) VALUES (1,3)
+
 
 DELETE FROM Usuarios
 WHERE IdUsuario=2;
