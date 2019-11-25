@@ -10,26 +10,24 @@ INSERT INTO Categorias (Nome) VALUES ('Romance')
 									,('Ação')
 									,('Suspense')
 
-INSERT INTO Permissao(Nome) VALUES	('ADM')
-									,('Cliente')
 						
 INSERT INTO FS(Qual) VALUES ('Filme')
 									,('Série')
 
 
 
-INSERT INTO Usuarios(Nome,Email,Permissao,CPF) VALUES ('Pedro','Pedro@gmail.com','CLIENTE',597996120-80)
-INSERT INTO Usuarios(Nome,Email,Permissao,CPF) VALUES ('José','Jose@gmail.com','CLIENTE',685865940-40)
-INSERT INTO Usuarios(Nome,Email,Permissao,CPF) VALUES ('Joaquim','Joaquim@gmail.com','CLIENTE',520910800-71)
-INSERT INTO Usuarios(Nome,Email,Permissao,CPF) VALUES('Colibri','Colibri@gmail.com','ADMIN',873611280-17)
-INSERT INTO Usuarios(Nome,Email,Permissao,CPF) VALUES('Helena','Helena@gmail.com','ADMIN',907294110-10)
+INSERT INTO Usuarios(Email,Senha,Permissao) VALUES ('Pedro@gmail.com','123456','CLIENTE')
+INSERT INTO Usuarios(Email,Senha,Permissao) VALUES ('Jose@gmail.com','123456','CLIENTE')
+INSERT INTO Usuarios(Email,Senha,Permissao) VALUES ('Joaquim@gmail.com','123456','CLIENTE')
+INSERT INTO Usuarios(Email,Senha,Permissao) VALUES('Colibri@gmail.com','123456','ADMIN')
+INSERT INTO Usuarios(Email,Senha,Permissao) VALUES('Helena@gmail.com','123456','ADMIN')
 
 
 INSERT INTO Conteudo(Titulo,Sinopse,DLanc,Duracao,IdCategoria,IdFS,IdPlataforma) VALUES ('Matrix','Um jovem programador é atormentado por estranhos pesadelos nos quais sempre está conectado por cabos a um imenso sistema de computadores do futuro','1999-05-21','02:00:00',4,1,1)
 																						,('A Maldição Da Residência Hill','The Haunting of Hill House é uma série de televisão de terror sobrenatural americana criada por Mike Flanagan.','2018-10-12','23:59:59',2,2,1)
 INSERT INTO Conteudo(Titulo,Sinopse,DLanc,Duracao,IdCategoria,IdFS,IdPlataforma) VALUES ('KingKong','Acompanhe o diretor Carl Denham e sua equipe em uma viagem de Nova York até uma ilha misteriosa para as filmagens de um novo longa','2005-12-16','03:21:00',1,1,4)
 INSERT INTO Conteudo(Titulo,Sinopse,DLanc,Duracao,IdCategoria,IdFS,IdPlataforma) VALUES ('ToyStory4','Woody, Buzz Lightyear e o resto da turma embarcam em uma viagem com Bonnie e um novo brinquedo chamado Forky.','2019-07-20','01:40:00',3,1,2)
-INSERT INTO Conteudo(Titulo,Sinopse,DLanc,Duracao,IdCategoria,IdFS,IdPlataforma) VALUES ('La Casa de Papel','Um grupo de nove ladrões, liderados por um Professor, prepara o roubo do século na Casa da Moeda da Espanha','2017-05-02','20:45:00',4,2,1)
+INSERT INTO Conteudo(Titulo,Sinopse,DLanc,Duracao,IdCategoria,IdFS,IdPlataforma) VALUES ('Casa de Papel - 3° Temporada','Um grupo de nove ladrões, liderados por um Professor, prepara o roubo do século na Casa da Moeda da Espanha','2017-05-02','20:45:00',4,2,1)
 INSERT INTO Conteudo(Titulo,Sinopse,DLanc,Duracao,IdCategoria,IdFS,IdPlataforma) VALUES ('Voando Alto','Manou cresce acreditando que ele é uma gaivota como seus pais. Ele se esforça para nadar, pescar e voar como eles, mas não parece muito talentoso.','2019-08-01','01:50:00',13,1,3)
 INSERT INTO Conteudo(Titulo,Sinopse,DLanc,Duracao,IdCategoria,IdFS,IdPlataforma) VALUES ('Leste Oeste','Ezequiel, um ex-piloto, volta à sua cidade natal após 15 anos para disputar uma última corrida. Ele reencontra Stela, um antigo affair, Angelo, o patriarca da família, e Pedro, um jovem de 16 anos que sonha em ser piloto.','2019-09-02','02:45:00',1,1,2)
 INSERT INTO Conteudo(Titulo,Sinopse,DLanc,Duracao,IdCategoria,IdFS,IdPlataforma) VALUES ('La Casa de Papel','Um grupo de nove ladrões, liderados por um Professor, prepara o roubo do século na Casa da Moeda da Espanha, com o objetivo de fabricar o próprio dinheiro em quantidades incalculáveis e nunca antes vista.','2017-05-02','20:20:00',3,2,1)
@@ -48,7 +46,7 @@ AS
 SELECT * FROM Conteudo Join Categorias ON Conteudo.IdCategoria = Categorias.IdCategoria
 WHERE Categorias.Nome = @Categorias;
 
-EXEC ListarCategorias 'Ação';
+EXEC ListarCategorias 'Animação';
 
 ALTER TABLE Usuarios ADD Imagem VARCHAR(255);
 
@@ -84,13 +82,31 @@ WHERE IdConteudo = 9
 
 SELECT * FROM Categorias;
 SELECT * FROM Plataforma;
-SELECT * FROM Permissao;
 SELECT * FROM FS;
 SELECT * FROM Conteudo;
 SELECT * FROM Usuarios;
 SELECT * FROM Favoritos;
-DELETE FROM Categorias
-WHERE IdCategoria = 12;
+
+delete Conteudo where IdConteudo = 8;
+
+ALTER TABLE Conteudo add foto VARCHAR(3000) DEFAULT 'https://www.ferramentastenace.com.br/wp-content/uploads/2017/11/sem-foto.jpg' NOT NULL
+
+ALTER TABLE Usuarios add foto VARCHAR(3000) DEFAULT 'https://elaele.com.br/img/anonimo.png' NOT NULL
+
+UPDATE Conteudo set foto = 'http://br.web.img3.acsta.net/c_215_290/medias/nmedia/18/91/08/82/20128877.JPG' WHERE IdConteudo = 1;
+UPDATE Conteudo set foto = 'http://br.web.img2.acsta.net/pictures/18/09/19/18/09/2669292.jpg' WHERE IdConteudo = 2;
+UPDATE Conteudo set foto = 'http://br.web.img2.acsta.net/c_215_290/pictures/19/03/27/21/03/0464387.jpg' WHERE IdConteudo = 4;
+UPDATE Conteudo set foto = 'http://br.web.img3.acsta.net/c_216_288/pictures/19/06/21/19/52/3355532.jpg' WHERE IdConteudo = 5;
+UPDATE Conteudo set foto = 'http://lojasaraiva.vteximg.com.br/arquivos/ids/2208430/1003361244.jpg?v=637008159266330000' WHERE IdConteudo = 6;
+UPDATE Conteudo set foto = 'https://1.bp.blogspot.com/-y7MmVQyG5Wc/XT9Cy_ITGoI/AAAAAAAA5jo/cqxsP2MkyqcCl4bd1yZVBWCxrLrlpVvKwCLcBGAs/s1600/leste-oeste02.jpg' WHERE IdConteudo = 15;
+UPDATE Conteudo set foto = 'http://br.web.img3.acsta.net/c_216_288/pictures/19/06/21/19/52/3355532.jpg' WHERE IdConteudo = 16;
+UPDATE Conteudo set foto = 'http://br.web.img3.acsta.net/pictures/19/06/21/19/52/3355532.jpg' WHERE IdConteudo = 17;
+
+alter table Usuarios add Permissao varchar(35) not null default('Cliente') 
+
+update usuarios set Permissao='Admin' where IdUsuario=4
+
+
 
 INSERT INTO Favoritos(IdConteudo,IdUsuario) VALUES (1,3)
 

@@ -2,9 +2,8 @@ USE T_Opflix;
 
 CREATE TABLE Usuarios(
 	IdUsuario INT PRIMARY KEY IDENTITY
-	,Nome VARCHAR(200) NOT NULL
 	,Email VARCHAR(200) NOT NULL
-	,CPF INT NOT NULL
+	,Senha VARCHAR(200) NOT NULL
 	,Permissao VARCHAR(7) NOT NULL
 );
 CREATE TABLE FS(
@@ -31,15 +30,18 @@ CREATE TABLE Conteudo(
 );
 
 
-CREATE TABLE Permissao(
-	IdPermissao INT PRIMARY KEY IDENTITY 
-	,Nome VARCHAR(10)
+CREATE TABLE Favoritos(
+	IdFavorito INT PRIMARY KEY IDENTITY 
+	,IdConteudo INT FOREIGN KEY REFERENCES Conteudo (IdConteudo)
+	,IdUsuario INT FOREIGN KEY REFERENCES Usuarios (IdUsuario)
 );
 
 ALTER TABLE dbo.Usuarios ADD IdPermissao INT FOREIGN KEY REFERENCES Permissao (IdPermissao);
 SELECT * FROM Usuarios
 ALTER TABLE dbo.Usuarios DROP COLUMN CPF;
 DROP TABLE Usuarios;
+DROP TABLE Favoritos;
+
 
 ALTER TABLE Usuarios ADD CPF BIGINT NOT NULL ;
 

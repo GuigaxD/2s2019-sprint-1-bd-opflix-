@@ -1,4 +1,5 @@
-﻿using Senai.Opflix.WebApi.Domains;
+﻿using Microsoft.EntityFrameworkCore;
+using Senai.Opflix.WebApi.Domains;
 using Senai.Opflix.WebApi.Interface;
 using System;
 using System.Collections.Generic;
@@ -51,7 +52,7 @@ namespace Senai.Opflix.WebApi.Repositories
         {
             using (opflixContext ctx = new opflixContext())
             {
-               return ctx.Conteudo.ToList();
+                return ctx.Conteudo.Include(x => x.IdCategoriaNavigation).Include(x => x.IdPlataformaNavigation).ToList();
             }
         }
         public void Deletar(int Id)
